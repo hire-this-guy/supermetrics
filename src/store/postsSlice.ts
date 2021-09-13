@@ -18,12 +18,12 @@ export interface PostResponse {
 		posts: Post[];
 	};
 }
-export interface TokenState {
+export interface PostsState {
 	data: Post[];
 	status?: "pending" | "fulfilled" | "rejected";
 }
 
-const initialState: TokenState = {
+const initialState: PostsState = {
 	data: [],
 };
 
@@ -56,16 +56,17 @@ export const postsSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(getPosts.fulfilled, (state: TokenState, action) => {
+		builder.addCase(getPosts.fulfilled, (state: PostsState, action) => {
 			state.data = action.payload;
 			state.status = "fulfilled";
 		});
-		builder.addCase(getPosts.rejected, (state: TokenState) => {
+
+		builder.addCase(getPosts.rejected, (state: PostsState) => {
 			// TODO proper error handling
-			console.log("Error getting token");
+			console.log("Error getting posts");
 			state.status = "rejected";
 		});
-		builder.addCase(getPosts.pending, (state: TokenState) => {
+		builder.addCase(getPosts.pending, (state: PostsState) => {
 			state.status = "pending";
 		});
 	},
