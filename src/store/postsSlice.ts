@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { config } from "../app/config";
 import { RootState } from "./store";
+import { TypedResponse } from "../app/types";
 
 export interface Post {
 	id: string;
@@ -25,10 +26,6 @@ export interface TokenState {
 const initialState: TokenState = {
 	data: [],
 };
-
-interface TypedResponse<T> extends Response {
-	parsedBody?: T;
-}
 
 export const postsFetcher = async (
 	token: string,

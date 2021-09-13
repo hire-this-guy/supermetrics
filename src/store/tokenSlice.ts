@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { tokenFetcher } from "../services/data";
+import { config } from "../app/config";
+import { TypedResponse } from "../app/types";
 
 export interface TokenState {
 	value: string;
@@ -8,6 +9,31 @@ export interface TokenState {
 
 const initialState: TokenState = {
 	value: "",
+};
+
+interface TokenResponse {
+	data: {
+		sl_token: string;
+	};
+}
+
+const tokenFetcher = async (name: string, email: string): Promise<string> => {
+	const response: TypedResponse<TokenResponse> = await fetch(
+		config.url.register,
+		{
+			method: "POST",
+			headers: {
+				"Content-type": "application/json; charset=UTF-8",
+			},
+			body: JSON.stringify({
+				client_id: config.clientId,
+				email,
+				name,
+			}),
+		}
+	);
+	const body = await response.json();
+	return body.data.sl_token;
 };
 
 export const getToken = createAsyncThunk(
