@@ -3,6 +3,7 @@ import PostItem from "../PostItem/PostItem";
 import { getPosts } from "../../store/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { config } from "../../app/config";
 
 const PostsList: React.FC = () => {
 	const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const PostsList: React.FC = () => {
 	);
 
 	if (posts.length === 0 && !postsLoading) {
-		dispatch(getPosts());
+		dispatch(getPosts(config.pagesToGet));
 	}
 
 	return (

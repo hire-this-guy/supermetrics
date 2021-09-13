@@ -29,11 +29,10 @@ const initialState: TokenState = {
 
 export const postsFetcher = async (
 	token: string,
-	numberOfPages: number,
-	startPage = 1
+	page: number
 ): Promise<Post[]> => {
 	const response: TypedResponse<PostResponse> = await fetch(
-		config.url.posts(token, startPage)
+		config.url.posts(token, page)
 	);
 	const body = await response.json();
 	return body.data.posts;
@@ -41,9 +40,14 @@ export const postsFetcher = async (
 
 export const getPosts = createAsyncThunk(
 	"posts/get",
-	async (_params, thunkAPI) => {
+	async (pages: number, thunkAPI) => {
 		const token = (thunkAPI.getState() as RootState).token.value;
-		return postsFetcher(token, 1);
+		const requests = [];
+		for (let i = 1; i < pages + 1; i++) {
+			requests.push(postsFetcher(token, i));
+		}
+		const responses = await Promise.all(requests);
+		return responses.flat();
 	}
 );
 
