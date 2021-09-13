@@ -1,11 +1,6 @@
-import {
-	createAsyncThunk,
-	createSelector,
-	createSlice,
-} from "@reduxjs/toolkit";
-import { tokenFetcher } from "../services/data";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { config } from "../app/config";
-import { RootState } from "../app/store";
+import { RootState } from "./store";
 
 export interface Post {
 	id: string;
@@ -50,8 +45,6 @@ export const postsFetcher = async (
 export const getPosts = createAsyncThunk(
 	"posts/get",
 	async (_params, thunkAPI) => {
-		// const token = thunkAPI.getState()
-		console.log("get state", thunkAPI.getState());
 		const token = (thunkAPI.getState() as RootState).token.value;
 		return postsFetcher(token, 1);
 	}

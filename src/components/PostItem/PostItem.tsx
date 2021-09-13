@@ -1,4 +1,4 @@
-import { Post } from "../../services/postsThunk";
+import { Post } from "../../store/postsSlice";
 import React from "react";
 
 const PostItem: React.FC<{ data: Post }> = ({ data }) => {

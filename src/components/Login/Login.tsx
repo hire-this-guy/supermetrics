@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./Login.css";
 import { useDispatch } from "react-redux";
-import { getToken } from "../../features/token";
+import { getToken } from "../../store/tokenSlice";
 
 const Login: React.FC = () => {
 	const name = useRef<HTMLInputElement>(null);

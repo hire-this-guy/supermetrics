@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tokenReducer from "../features/token";
-import postsReducer from "../services/postsThunk";
+import tokenReducer from "./tokenSlice";
+import postsReducer from "./postsSlice";
 
 export const store = configureStore({
 	reducer: {

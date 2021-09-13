@@ -1,13 +1,10 @@
 import React from "react";
-import PostItem from "../post/PostItem";
-import { getPosts } from "../../services/postsThunk";
+import PostItem from "../PostItem/PostItem";
+import { getPosts } from "../../store/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { RootState } from "../../store/store";
 
 const PostsList: React.FC = () => {
-	// This is the best way I found to make batch queries with RTK
-	// TODO make it better
-
 	const dispatch = useDispatch();
 
 	const posts = useSelector((state: RootState) => state.posts.data);
@@ -19,7 +16,6 @@ const PostsList: React.FC = () => {
 	);
 
 	if (posts.length === 0 && !postsLoading) {
-		console.log("getting posts");
 		dispatch(getPosts());
 	}
 
