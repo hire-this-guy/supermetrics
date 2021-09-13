@@ -1,28 +1,34 @@
 import React from "react";
-import { Post, useGetPostPageQuery } from "../../services/postsApi";
 import PostItem from "../post/PostItem";
-import { config } from "../../app/config";
+import { getPosts } from "../../services/postsThunk";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
-const PostsList: React.FC<{ token: string }> = ({ token }) => {
+const PostsList: React.FC = () => {
 	// This is the best way I found to make batch queries with RTK
 	// TODO make it better
 
-	const results = [];
-	for (let i = 1; i < config.pagesToGet + 1; i++) {
-		results.push(useGetPostPageQuery({ token, page: i }));
+	const dispatch = useDispatch();
+
+	const posts = useSelector((state: RootState) => state.posts.data);
+	const postsLoading = useSelector(
+		(state: RootState) => state.posts.status === "pending"
+	);
+	const postsError = useSelector(
+		(state: RootState) => state.posts.status === "rejected"
+	);
+
+	if (posts.length === 0 && !postsLoading) {
+		console.log("getting posts");
+		dispatch(getPosts());
 	}
-	const data: Post[] = results
-		.filter((result) => result.status === "fulfilled")
-		.flatMap((result) => result.data as unknown as Post);
-	const isLoading = results.some((result) => result.status === "pending");
-	const hasErrors = results.some((result) => result.status === "rejected");
 
 	return (
 		<div>
-			<div>Posts downloaded {data?.length ?? 0}</div>
-			{hasErrors && <div>Couldn't fetch one or more pages</div>}
-			{isLoading && <div>is loading... </div>}
-			{data.map((post) => (
+			<div>Posts downloaded {posts?.length ?? 0}</div>
+			{postsError && <div>Couldn't fetch one or more pages</div>}
+			{postsLoading && <div>is loading... </div>}
+			{posts.map((post) => (
 				<PostItem data={post} key={post.id} />
 			))}
 		</div>

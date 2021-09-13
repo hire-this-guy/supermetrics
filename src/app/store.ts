@@ -1,14 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import tokenReducer from "../features/token";
-import { postsApi } from "../services/postsApi";
+import postsReducer from "../services/postsThunk";
 
 export const store = configureStore({
 	reducer: {
 		token: tokenReducer,
-		[postsApi.reducerPath]: postsApi.reducer,
+		posts: postsReducer,
 	},
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(postsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
