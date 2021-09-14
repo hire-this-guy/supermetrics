@@ -9,7 +9,7 @@ function App() {
 	const token = useSelector((state: RootState) => state.token.value);
 	return (
 		<div className="App">
-			<Login />
+			{!token && <Login />}
 			{token && <PostsList />}
 		</div>
 	);

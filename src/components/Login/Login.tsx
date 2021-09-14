@@ -22,16 +22,26 @@ const Login: React.FC = () => {
 
 	return (
 		<div className="Login">
-			<form className="Login__inner" onSubmit={submit}>
-				<input type="text" placeholder="name" name="name" ref={name} required />
+			<form className="Login__form" onSubmit={submit}>
 				<input
+					className="Login__input"
+					type="text"
+					placeholder="name"
+					name="name"
+					ref={name}
+					required
+				/>
+				<input
+					className="Login__input"
 					type="email"
 					placeholder="email"
 					name="email"
 					ref={email}
 					required
 				/>
-				<button type="submit">Enter</button>
+				<button className="Login__button" type="submit">
+					Enter
+				</button>
 			</form>
 		</div>
 	);

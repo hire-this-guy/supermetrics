@@ -1,3 +1,35 @@
-body {
-	background: beige;
+.Login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+
+	--c-accent: rgb(187, 223, 255);
+}
+
+.Login__form {
+	padding: 15px;
+	width: 280px;
+	border: 1px solid;
+	box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.1);
+}
+
+.Login__input {
+	margin: 10px auto;
+	padding: 0.5em;
+	width: 100%;
+}
+
+.Login__button {
+	display: block;
+	appearance: none;
+	margin: 10px auto;
+	background: none;
+	border: 1px solid;
+	padding: 0.5em 1em;
+	transition: background-color 0.2s;
+}
+
+.Login__button:hover {
+	background-color: var(--c-accent);
 }
