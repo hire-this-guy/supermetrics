@@ -29,7 +29,6 @@ const PostsList: React.FC = () => {
 		state.posts.data.forEach((item) => {
 			authors.set(item.from_id, (authors.get(item.from_id) ?? 0) + 1);
 		});
-		console.log("useAuthors", ...authors);
 		return [...authors];
 	});
 
