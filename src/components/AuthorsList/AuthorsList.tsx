@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { getPosts, Post } from "../../store/postsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { Post } from "../../store/postsSlice";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import Author from "../Author/Author";
 import { createSelector } from "@reduxjs/toolkit";
