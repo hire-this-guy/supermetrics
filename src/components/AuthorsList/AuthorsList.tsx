@@ -17,6 +17,7 @@ const AuthorsList: React.FC = () => {
 	};
 
 	const [sortReverse, setSortReverse] = useState(false);
+	const [search, setSearch] = useState("");
 
 	const handleReverse = () => {
 		setSortReverse(!sortReverse);
@@ -50,12 +51,26 @@ const AuthorsList: React.FC = () => {
 	const dataToDisplay = useSelector(authorsData);
 
 	// No need to create selector for so few entries
-	const getDataToDisplay = () =>
-		sortReverse ? dataToDisplay : dataToDisplay.reverse();
+	const getDataToDisplay = () => {
+		if (search.length === 0) {
+			return sortReverse ? dataToDisplay : dataToDisplay.reverse();
+		} else {
+			// TODO better handling of spaces
+			const result = dataToDisplay.filter((author) =>
+				author.name.toLowerCase().includes(search.toLowerCase())
+			);
+			return sortReverse ? result : result.reverse();
+		}
+	};
 
 	return (
 		<div>
 			<h2>Authors</h2>
+			<input
+				type="search"
+				placeholder="search authors"
+				onChange={(e) => setSearch(e.target.value)}
+			/>
 			<button onClick={handleReverse}>reverse</button>
 			{getDataToDisplay().map((author) => {
 				return (

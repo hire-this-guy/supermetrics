@@ -9,6 +9,7 @@ What works:
 - [x] getting posts
 - [x] authors list stub
 - [x] sorting authors
+- [x] filtering authors
 
 Next steps:
 
