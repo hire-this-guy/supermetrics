@@ -8,10 +8,10 @@ What works:
 - [x] getting the token
 - [x] getting posts
 - [x] authors list stub
+- [x] sorting authors
 
 Next steps:
 
-- [ ] sorting authors
 - [ ] add router to display linkable posts lists
 - [ ] sorting posts
 - [ ] filtering

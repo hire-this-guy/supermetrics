@@ -16,22 +16,6 @@ const PostsList: React.FC = () => {
 		(state: RootState) => state.posts.status === "rejected"
 	);
 
-	const authorNames = useSelector((state: RootState) => {
-		const dictionary = new Map<Post["from_id"], Post["from_name"]>();
-		state.posts.data.forEach((item) => {
-			dictionary.set(item.from_id, item.from_name);
-		});
-		return dictionary;
-	});
-
-	const authorsWithCount = useSelector((state: RootState) => {
-		const authors = new Map<Post["from_id"], number>();
-		state.posts.data.forEach((item) => {
-			authors.set(item.from_id, (authors.get(item.from_id) ?? 0) + 1);
-		});
-		return [...authors];
-	});
-
 	if (posts.length === 0 && !postsLoading) {
 		dispatch(getPosts(config.pagesToGet));
 	}
@@ -42,12 +26,6 @@ const PostsList: React.FC = () => {
 			<hr />
 			{postsError && <div>Couldn't fetch one or more pages</div>}
 			{postsLoading && <div>is loading... </div>}
-			{authorsWithCount.map((author) => (
-				<Author
-					name={authorNames.get(author[0]) as string}
-					numberOfPosts={author[1]}
-				/>
-			))}
 		</div>
 	);
 };
