@@ -10,12 +10,12 @@ What works:
 - [x] authors list stub
 - [x] sorting authors
 - [x] filtering authors
+- [x] sorting posts
+- [x] filtering
 
 Next steps:
 
 - [ ] add router to display linkable posts lists
-- [ ] sorting posts
-- [ ] filtering
 - [ ] tests
 - [ ] making sure it doesn't look ugly (all the styling so far is done in a speed over beauty way)
 
