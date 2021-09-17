@@ -20,7 +20,7 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 		const [sortReverse, setSortReverse] = useState(false);
 		const [search, setSearch] = useState("");
 
-		const handleReverse = () => {
+		const toggleReverse = () => {
 			setSortReverse(!sortReverse);
 		};
 
@@ -58,7 +58,7 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 			} else {
 				// TODO better handling of spaces
 				const result = dataToDisplay.filter((author) =>
-					author.name.toLowerCase().includes(search.toLowerCase())
+					author.name.toLowerCase().includes(search.toLowerCase().trim())
 				);
 				return sortReverse ? result : result.reverse();
 			}
@@ -72,7 +72,7 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 					placeholder="search authors"
 					onChange={(e) => setSearch(e.target.value)}
 				/>
-				<button onClick={handleReverse}>reverse</button>
+				<button onClick={toggleReverse}>reverse</button>
 				{getDataToDisplay().map((author) => {
 					return (
 						<Author
