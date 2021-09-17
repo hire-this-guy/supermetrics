@@ -1,15 +1,22 @@
 import React, { useRef } from "react";
 import "./Login.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../store/tokenSlice";
+import { RootState } from "../../store/store";
 
 const Login: React.FC = () => {
 	const name = useRef<HTMLInputElement>(null);
 	const email = useRef<HTMLInputElement>(null);
 
 	const dispatch = useDispatch();
+	const isTokenPending = useSelector(
+		(state: RootState) => state.token.status === "pending"
+	);
 
 	const submit = async (event: React.FormEvent<HTMLFormElement>) => {
+		if (isTokenPending) {
+			return;
+		}
 		event.preventDefault();
 		// TODO error handling
 		dispatch(
@@ -39,9 +46,12 @@ const Login: React.FC = () => {
 					ref={email}
 					required
 				/>
-				<button className="Login__button" type="submit">
-					Enter
-				</button>
+				{!isTokenPending && (
+					<button className="Login__button" type="submit">
+						Enter
+					</button>
+				)}
+				{isTokenPending && <div>loading...</div>}
 			</form>
 		</div>
 	);
