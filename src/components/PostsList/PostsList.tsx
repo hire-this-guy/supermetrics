@@ -42,7 +42,8 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 				placeholder="search posts"
 				onChange={(e) => setSearch(e.target.value)}
 			/>
-			<button onClick={toggleReverse}>reverse</button>
+			<button onClick={() => setSortReverse(false)}>newest first</button>
+			<button onClick={() => setSortReverse(true)}>oldest first</button>
 			{getDataToDisplay().map((post) => (
 				<PostItem data={post} key={post.id} />
 			))}
