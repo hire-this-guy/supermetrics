@@ -13,6 +13,11 @@ const Login: React.FC = () => {
 		(state: RootState) => state.token.status === "pending"
 	);
 
+	// TODO remove the message when changes were made to the form
+	const isTokenRejected = useSelector(
+		(state: RootState) => state.token.status === "rejected"
+	);
+
 	const submit = async (event: React.FormEvent<HTMLFormElement>) => {
 		if (isTokenPending) {
 			return;
@@ -30,6 +35,7 @@ const Login: React.FC = () => {
 	return (
 		<div className="Login">
 			<form className="Login__form" onSubmit={submit}>
+				{isTokenRejected && <div>Error occurred, please try again</div>}
 				<input
 					className="Login__input"
 					type="text"
