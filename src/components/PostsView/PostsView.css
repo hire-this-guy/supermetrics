@@ -1,0 +1,8 @@
+.PostsView {
+	display: flex;
+	flex-direction: row;
+}
+
+.PostsList {
+	flex-grow: 1;
+}

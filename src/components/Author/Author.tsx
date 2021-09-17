@@ -5,13 +5,13 @@ export interface AuthorProps {
 	name: string;
 	id: string;
 	numberOfPosts: number;
+	onClick: React.MouseEventHandler;
 }
 
-const Author: React.FC<AuthorProps> = ({ name, id, numberOfPosts }) => {
+const Author: React.FC<AuthorProps> = ({ ...props }) => {
 	return (
-		<div className="Author">
-			{name} ({numberOfPosts})
-			<br />
+		<div className="Author" onClick={props.onClick}>
+			{props.name} ({props.numberOfPosts})
 		</div>
 	);
 };

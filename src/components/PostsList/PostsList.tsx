@@ -1,31 +1,20 @@
 import React from "react";
-import { getPosts, Post } from "../../store/postsSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { config } from "../../app/config";
-import Author from "../Author/Author";
+import { Post } from "../../store/postsSlice";
+import PostItem from "../PostItem/PostItem";
 
-const PostsList: React.FC = () => {
-	const dispatch = useDispatch();
-
-	const posts = useSelector((state: RootState) => state.posts.data);
-	const postsLoading = useSelector(
-		(state: RootState) => state.posts.status === "pending"
-	);
-	const postsError = useSelector(
-		(state: RootState) => state.posts.status === "rejected"
-	);
-
-	if (posts.length === 0 && !postsLoading) {
-		dispatch(getPosts(config.pagesToGet));
+const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
+	if (posts.length === 0) {
+		return <div>Please select an author</div>;
 	}
 
 	return (
-		<div>
-			<div>Posts downloaded {posts?.length ?? 0}</div>
-			<hr />
-			{postsError && <div>Couldn't fetch one or more pages</div>}
-			{postsLoading && <div>is loading... </div>}
+		<div className="PostsList">
+			<h2>
+				{posts.length} posts by {posts[0].from_name}
+			</h2>
+			{posts.map((post) => (
+				<PostItem data={post} />
+			))}
 		</div>
 	);
 };
