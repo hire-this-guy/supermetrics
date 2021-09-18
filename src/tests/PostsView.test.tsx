@@ -19,8 +19,19 @@ import { PostItemTestIds } from "../components/PostItem/PostItem.testIds";
 import { AuthorTestIds } from "../components/Author/Author.testIds";
 
 describe("Posts view", () => {
+	let responded = false;
 	const server = setupServer(
 		rest.get(`${apiBase}/posts`, (req, res, ctx) => {
+			if (responded) {
+				return res(
+					ctx.json({
+						data: {
+							posts: [],
+						},
+					})
+				);
+			}
+			responded = true;
 			return res(
 				ctx.json({
 					data: {
