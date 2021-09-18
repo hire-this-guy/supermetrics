@@ -9,7 +9,7 @@ export interface Post {
 	from_id: string;
 	message: string;
 	type: string;
-	created_time: Date;
+	created_time: string;
 }
 
 export interface PostResponse {
@@ -62,8 +62,6 @@ export const postsSlice = createSlice({
 		});
 
 		builder.addCase(getPosts.rejected, (state: PostsState) => {
-			// TODO proper error handling
-			console.log("Error getting posts");
 			state.status = "rejected";
 		});
 		builder.addCase(getPosts.pending, (state: PostsState) => {

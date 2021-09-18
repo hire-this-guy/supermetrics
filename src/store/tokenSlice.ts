@@ -54,8 +54,6 @@ export const tokenSlice = createSlice({
 			state.status = "fulfilled";
 		});
 		builder.addCase(getToken.rejected, (state: TokenState) => {
-			// TODO proper error handling
-			console.log("Error getting token");
 			state.status = "rejected";
 		});
 		builder.addCase(getToken.pending, (state: TokenState) => {
