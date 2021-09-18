@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
-import "./Login.css";
+import "./RegisterView.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../store/tokenSlice";
 import { RootState } from "../../store/store";
 
-const Login: React.FC = () => {
+const RegisterView: React.FC = () => {
 	const name = useRef<HTMLInputElement>(null);
 	const email = useRef<HTMLInputElement>(null);
 
@@ -59,4 +59,4 @@ const Login: React.FC = () => {
 	);
 };
 
-export default Login;
+export default RegisterView;

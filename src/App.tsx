@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Login from "./components/Login/Login";
+import RegisterView from "./components/RegisterView/RegisterView";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import PostsView from "./components/PostsView/PostsView";
@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
 	return (
 		<div className="App">
-			{!hasToken && <Login />}
+			{!hasToken && <RegisterView />}
 			{hasToken && <PostsView />}
 		</div>
 	);

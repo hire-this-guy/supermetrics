@@ -8,7 +8,7 @@ import {
 	waitFor,
 	waitForElementToBeRemoved,
 } from "@testing-library/react";
-import Login from "../components/Login/Login";
+import RegisterView from "../components/RegisterView/RegisterView";
 import { Provider } from "react-redux";
 import { RootState, store } from "../store/store";
 
@@ -39,7 +39,7 @@ describe("Login", () => {
 	beforeEach(() => {
 		render(
 			<Provider store={store}>
-				<Login />
+				<RegisterView />
 			</Provider>
 		);
 	});
