@@ -1,5 +1,6 @@
 import React from "react";
 import "./Author.css";
+import { AuthorTestIds } from "./Author.testIds";
 
 export interface AuthorProps {
 	name: string;
@@ -10,7 +11,11 @@ export interface AuthorProps {
 
 const Author: React.FC<AuthorProps> = ({ ...props }) => {
 	return (
-		<div className="Author" onClick={props.onClick}>
+		<div
+			className="Author"
+			onClick={props.onClick}
+			data-testid={AuthorTestIds.wrapper}
+		>
 			{props.name} ({props.numberOfPosts})
 		</div>
 	);

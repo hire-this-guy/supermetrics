@@ -72,7 +72,9 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 					placeholder="search authors"
 					onChange={(e) => setSearch(e.target.value)}
 				/>
-				<button onClick={toggleReverse}>reverse</button>
+				<button onClick={toggleReverse} data-testid="reverseAuthors">
+					reverse
+				</button>
 				{getDataToDisplay().map((author) => {
 					return (
 						<Author

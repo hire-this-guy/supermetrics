@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Post } from "../../store/postsSlice";
 import PostItem from "../PostItem/PostItem";
+import { PostsListTestIds } from "./PostsList.testIds";
 
 const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 	const sortByDate = (a: Post, b: Post) => {
@@ -13,10 +14,6 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 	const [sortReverse, setSortReverse] = useState(false);
 	const [search, setSearch] = useState("");
 
-	const toggleReverse = () => {
-		setSortReverse(!sortReverse);
-	};
-
 	if (posts.length === 0) {
 		return <div>Please select an author</div>;
 	}
@@ -25,7 +22,6 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 		if (search.length === 0) {
 			return sortReverse ? sortedPosts : sortedPosts.reverse();
 		} else {
-			// TODO better handling of spaces
 			const result = sortedPosts.filter((post) =>
 				post.message.toLowerCase().includes(search.toLowerCase().trim())
 			);
@@ -41,9 +37,20 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 				type="search"
 				placeholder="search posts"
 				onChange={(e) => setSearch(e.target.value)}
+				data-testid={PostsListTestIds.search}
 			/>
-			<button onClick={() => setSortReverse(false)}>newest first</button>
-			<button onClick={() => setSortReverse(true)}>oldest first</button>
+			<button
+				onClick={() => setSortReverse(false)}
+				data-testid={PostsListTestIds.newestFirst}
+			>
+				newest first
+			</button>
+			<button
+				onClick={() => setSortReverse(true)}
+				data-testid={PostsListTestIds.oldestFirst}
+			>
+				oldest first
+			</button>
 			{getDataToDisplay().map((post) => (
 				<PostItem data={post} key={post.id} />
 			))}

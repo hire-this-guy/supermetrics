@@ -12,12 +12,16 @@ What works:
 - [x] filtering authors
 - [x] sorting posts
 - [x] filtering
+- [x] tests
 
 Next steps:
 
 - [ ] add router to display linkable posts lists
-- [ ] tests
 - [ ] making sure it doesn't look ugly (all the styling so far is done in a speed over beauty way)
+
+Stretch goals:
+
+- [ ] store token in local storage and skip login window if valid token is present
 
 # Getting Started with Create React App
 

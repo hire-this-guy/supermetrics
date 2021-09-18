@@ -1,6 +1,6 @@
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { config } from "../../app/config";
+import { config } from "../app/config";
 import {
 	fireEvent,
 	render,
@@ -8,9 +8,9 @@ import {
 	waitFor,
 	waitForElementToBeRemoved,
 } from "@testing-library/react";
-import Login from "./Login";
+import Login from "../components/Login/Login";
 import { Provider } from "react-redux";
-import { RootState, store } from "../../store/store";
+import { RootState, store } from "../store/store";
 
 let tokenRequestSuccessfull = true;
 const mockedToken = "mockedToken";

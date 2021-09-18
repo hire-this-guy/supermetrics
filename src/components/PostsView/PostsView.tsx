@@ -13,19 +13,27 @@ const PostsView: React.FC = () => {
 	const dispatch = useDispatch();
 
 	const selectPosts = useSelector((state: RootState) => state.posts.data);
-	const selectPostsStatus = useSelector(
+	const selectPostsPending = useSelector(
 		(state: RootState) => state.posts.status === "pending"
 	);
+	const selectPostsRejected = useSelector(
+		(state: RootState) => state.posts.status === "rejected"
+	);
 
-	if (selectPosts.length === 0 && !selectPostsStatus) {
+	if (selectPosts.length === 0 && !selectPostsPending) {
 		dispatch(getPosts(config.pagesToGet));
 	}
 	const getFilteredPosts = () => {
 		return selectPosts.filter((post) => post.from_id === authorId);
 	};
 
+	if (selectPostsRejected) {
+		return <div>Error getting posts. Please try again.</div>;
+	}
+
 	return (
 		<section className="PostsView">
+			{selectPostsPending && <div>Loading...</div>}
 			<AuthorsList setAuthor={setAuthorId} />
 			<PostsList posts={getFilteredPosts()} />
 		</section>
