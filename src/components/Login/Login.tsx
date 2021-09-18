@@ -19,11 +19,7 @@ const Login: React.FC = () => {
 	);
 
 	const submit = async (event: React.FormEvent<HTMLFormElement>) => {
-		if (isTokenPending) {
-			return;
-		}
 		event.preventDefault();
-		// TODO error handling
 		dispatch(
 			getToken({
 				name: name.current?.value.trim() ?? "",
