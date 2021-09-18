@@ -29,11 +29,11 @@ const RegisterView: React.FC = () => {
 	};
 
 	return (
-		<div className="Login">
-			<form className="Login__form" onSubmit={submit}>
+		<div className="Register">
+			<form className="Register__form" onSubmit={submit}>
 				{isTokenRejected && <div>Error occurred, please try again</div>}
 				<input
-					className="Login__input"
+					className="Register__input"
 					type="text"
 					placeholder="name"
 					name="name"
@@ -41,7 +41,7 @@ const RegisterView: React.FC = () => {
 					required
 				/>
 				<input
-					className="Login__input"
+					className="Register__input"
 					type="email"
 					placeholder="email"
 					name="email"
@@ -49,7 +49,7 @@ const RegisterView: React.FC = () => {
 					required
 				/>
 				{!isTokenPending && (
-					<button className="Login__button" type="submit">
+					<button className="Register__button" type="submit">
 						Enter
 					</button>
 				)}

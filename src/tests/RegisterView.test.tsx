@@ -31,7 +31,7 @@ const server = setupServer(
 	})
 );
 
-describe("Login", () => {
+describe("Register view", () => {
 	beforeAll(() => {
 		server.listen();
 	});
