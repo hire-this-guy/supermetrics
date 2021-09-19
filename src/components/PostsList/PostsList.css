@@ -4,3 +4,10 @@
 .PostsList--empty {
 	opacity: 0.5;
 }
+.PostsList__search {
+	padding-left: var(--s-input-padding);
+}
+
+.PostsList__button + .PostsList__button {
+	border-left: 0;
+}

@@ -68,14 +68,17 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 		return (
 			<div className="AuthorsList">
 				<h2>Authors</h2>
-				<input
-					type="search"
-					placeholder="search authors"
-					onChange={(e) => setSearch(e.target.value)}
-				/>
-				<button onClick={toggleReverse} data-testid="reverseAuthors">
-					⇵
-				</button>
+				<div className="unobtrusive-content">
+					<input
+						type="search"
+						placeholder="search authors"
+						onChange={(e) => setSearch(e.target.value)}
+						className="AuthorsList__search"
+					/>
+					<button onClick={toggleReverse} data-testid="reverseAuthors">
+						⇵
+					</button>
+				</div>
 				<div className="AuthorsList__authors">
 					{getDataToDisplay().map((author) => {
 						return (

@@ -8,3 +8,10 @@
 .AuthorsList__authors {
 	padding-top: 1em;
 }
+
+.AuthorsList__search {
+	padding-right: var(--s-input-padding);
+}
+.AuthorsList__search:placeholder-shown {
+	text-align: right;
+}

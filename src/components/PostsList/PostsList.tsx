@@ -38,24 +38,29 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 			<h2>
 				{sortedPosts.length} posts by {sortedPosts[0].from_name}
 			</h2>
-			<input
-				type="search"
-				placeholder="search posts"
-				onChange={(e) => setSearch(e.target.value)}
-				data-testid={PostsListTestIds.search}
-			/>
-			<button
-				onClick={() => setSortReverse(false)}
-				data-testid={PostsListTestIds.newestFirst}
-			>
-				newest first
-			</button>
-			<button
-				onClick={() => setSortReverse(true)}
-				data-testid={PostsListTestIds.oldestFirst}
-			>
-				oldest first
-			</button>
+			<div className="unobtrusive-content">
+				<button
+					onClick={() => setSortReverse(false)}
+					data-testid={PostsListTestIds.newestFirst}
+					className="PostsList__button"
+				>
+					newest first
+				</button>
+				<button
+					onClick={() => setSortReverse(true)}
+					data-testid={PostsListTestIds.oldestFirst}
+					className="PostsList__button"
+				>
+					oldest first
+				</button>
+				<input
+					type="search"
+					placeholder="search posts"
+					onChange={(e) => setSearch(e.target.value)}
+					data-testid={PostsListTestIds.search}
+					className="PostsList__search"
+				/>
+			</div>
 			{getDataToDisplay().map((post) => (
 				<PostItem data={post} key={post.id} />
 			))}
