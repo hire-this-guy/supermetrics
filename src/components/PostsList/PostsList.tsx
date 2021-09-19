@@ -16,7 +16,11 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 	const [search, setSearch] = useState("");
 
 	if (posts.length === 0) {
-		return <div>Please select an author</div>;
+		return (
+			<div className="PostsList PostsList--empty">
+				<h2>Please select an author</h2>
+			</div>
+		);
 	}
 
 	const getDataToDisplay = () => {

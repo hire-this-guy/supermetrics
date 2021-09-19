@@ -1,3 +1,6 @@
 .PostsList {
 	padding-left: 3em;
 }
+.PostsList--empty {
+	opacity: 0.5;
+}
