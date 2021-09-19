@@ -31,6 +31,7 @@ const RegisterView: React.FC = () => {
 	return (
 		<div className="Register">
 			<form className="Register__form" onSubmit={submit}>
+				<h3 className="Register__header">Please register</h3>
 				{isTokenRejected && <div>Error occurred, please try again</div>}
 				<input
 					className="Register__input"

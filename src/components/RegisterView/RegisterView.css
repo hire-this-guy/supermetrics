@@ -7,15 +7,20 @@
 
 .Register__form {
 	padding: 15px;
-	width: 280px;
+	width: 320px;
 	border: 1px solid;
 	box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.1);
 }
 
+.Register__header {
+	text-align: center;
+}
+
 .Register__input {
 	margin: 10px auto;
-	padding: 0.5em;
+	padding: var(--s-input-padding) 0;
 	width: 100%;
+	border-width: 0 0 1px;
 }
 
 .Register__button {

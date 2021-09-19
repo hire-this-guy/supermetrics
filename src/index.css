@@ -35,10 +35,14 @@ h3 {
 	font-weight: normal;
 }
 
+button,
+input {
+	outline: none;
+}
+
 input[type="search"] {
 	border-width: 0 0 1px;
 	border-color: var(--c-text-primary);
-	outline: none;
 }
 
 button {
@@ -47,7 +51,6 @@ button {
 	border: 1px solid;
 	cursor: pointer;
 	transition: all var(--t-normal);
-	outline: none;
 }
 button:hover {
 	background-color: var(--c-text-primary);
