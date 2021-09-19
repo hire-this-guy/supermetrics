@@ -1,0 +1,10 @@
+.AuthorsList {
+	border-right: 1px solid;
+	padding-bottom: 2em;
+	text-align: right;
+	padding-right: 2em;
+	flex: 0 0 16em;
+}
+.AuthorsList__authors {
+	padding-top: 1em;
+}

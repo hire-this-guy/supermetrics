@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import Author from "../Author/Author";
 import { createSelector } from "@reduxjs/toolkit";
+import "./AuthrosList.css";
 
 const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 	({ setAuthor }) => {
@@ -65,7 +66,7 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 		};
 
 		return (
-			<div>
+			<div className="AuthorsList">
 				<h2>Authors</h2>
 				<input
 					type="search"
@@ -73,19 +74,21 @@ const AuthorsList: React.FC<{ setAuthor: (value: Post["from_id"]) => void }> =
 					onChange={(e) => setSearch(e.target.value)}
 				/>
 				<button onClick={toggleReverse} data-testid="reverseAuthors">
-					reverse
+					⇵
 				</button>
-				{getDataToDisplay().map((author) => {
-					return (
-						<Author
-							name={author.name}
-							numberOfPosts={author.count}
-							id={author.id}
-							key={author.id}
-							onClick={() => setAuthor(author.id)}
-						/>
-					);
-				})}
+				<div className="AuthorsList__authors">
+					{getDataToDisplay().map((author) => {
+						return (
+							<Author
+								name={author.name}
+								numberOfPosts={author.count}
+								id={author.id}
+								key={author.id}
+								onClick={() => setAuthor(author.id)}
+							/>
+						);
+					})}
+				</div>
 			</div>
 		);
 	};

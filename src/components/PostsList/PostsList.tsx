@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Post } from "../../store/postsSlice";
 import PostItem from "../PostItem/PostItem";
 import { PostsListTestIds } from "./PostsList.testIds";
+import "./PostsList.css";
 
 const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 	const sortByDate = (a: Post, b: Post) => {

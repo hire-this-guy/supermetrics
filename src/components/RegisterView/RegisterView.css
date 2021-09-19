@@ -3,8 +3,6 @@
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-
-	--c-accent: rgb(187, 223, 255);
 }
 
 .Register__form {
@@ -22,14 +20,6 @@
 
 .Register__button {
 	display: block;
-	appearance: none;
 	margin: 10px auto;
-	background: none;
-	border: 1px solid;
 	padding: 0.5em 1em;
-	transition: background-color 0.2s;
-}
-
-.Register__button:hover {
-	background-color: var(--c-accent);
 }
