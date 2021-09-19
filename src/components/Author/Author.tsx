@@ -7,12 +7,13 @@ export interface AuthorProps {
 	id: string;
 	numberOfPosts: number;
 	onClick: React.MouseEventHandler;
+	isActive: boolean;
 }
 
 const Author: React.FC<AuthorProps> = ({ ...props }) => {
 	return (
 		<div
-			className="Author"
+			className={`Author ${props.isActive ? "Author--active" : ""}`}
 			onClick={props.onClick}
 			data-testid={AuthorTestIds.wrapper}
 		>

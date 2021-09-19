@@ -1,4 +1,8 @@
 .Author {
 	display: block;
 	cursor: pointer;
+	line-height: 1.7;
+}
+.Author--active {
+	font-weight: bold;
 }

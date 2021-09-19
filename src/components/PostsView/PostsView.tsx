@@ -34,7 +34,7 @@ const PostsView: React.FC = () => {
 	return (
 		<section className="PostsView">
 			{selectPostsPending && <div>Loading...</div>}
-			<AuthorsList setAuthor={setAuthorId} />
+			<AuthorsList setAuthor={setAuthorId} activeAuthor={authorId} />
 			<PostsList posts={getFilteredPosts()} />
 		</section>
 	);
