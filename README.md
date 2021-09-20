@@ -1,7 +1,3 @@
-## This is still WIP
-
-I needed to learn how to modern redux and this part took me the most time, together with some detours to learn about RTK query and later remove it.
-
 What works:
 
 - [x] login window
@@ -13,11 +9,12 @@ What works:
 - [x] sorting posts
 - [x] filtering
 - [x] tests
+- [x] making sure it doesn't look ugly (all the styling so far is done in a speed over beauty way)
 
 Next steps:
 
+- [ ] proper loading states
 - [ ] add router to display linkable posts lists
-- [ ] making sure it doesn't look ugly (all the styling so far is done in a speed over beauty way)
 
 Stretch goals:
 
